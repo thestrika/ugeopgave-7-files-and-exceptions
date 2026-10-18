@@ -1,9 +1,12 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileNotFoundException;
 public class Main {
 
     private Scanner scan;
+
+    private File file = new File("data/file.csv");
 
     public Main(){
         this.scan = new Scanner(System.in);
@@ -26,6 +29,17 @@ public class Main {
             throw new IllegalArgumentException("Out of bounds. Index range is from 0 - " + (items.size() - 1));
         }
         return items.get(index);
+    }
+
+
+
+    public ArrayList<String> readLines(String path) throws FileNotFoundException{
+        ArrayList<String> textLines = new ArrayList<>();
+        Scanner fileScanner = new Scanner(new File(path));
+        while (fileScanner.hasNextLine()){
+            textLines.add(fileScanner.nextLine());
+        }
+        return textLines;
     }
 
 
@@ -60,6 +74,18 @@ public class Main {
         }
 
         //Opgave 3
+        try{
+            ArrayList<String> textLines = readLines("data/file.csv");
+            for(String line : textLines){
+                System.out.println(line);
+            }
+        }
+        catch (FileNotFoundException e){
+            System.out.println("File not found");
+        }
+
+
+        //Opgave 4
 
 
 
