@@ -12,6 +12,7 @@ public class Main {
         this.scan = new Scanner(System.in);
     }
 
+    //opg 1
     public int promptNumber(String message) {
         try{
             System.out.println(message);
@@ -23,7 +24,7 @@ public class Main {
         }
     }
 
-
+    //opg 2b
     public String getItem(ArrayList<String> items, int index) {
         if(index < 0 || index >= items.size()){
             throw new IllegalArgumentException("Out of bounds. Index range is from 0 - " + (items.size() - 1));
@@ -32,7 +33,7 @@ public class Main {
     }
 
 
-
+    //opg 3
     public ArrayList<String> readLines(String path) throws FileNotFoundException{
         ArrayList<String> textLines = new ArrayList<>();
         Scanner fileScanner = new Scanner(new File(path));
@@ -85,7 +86,23 @@ public class Main {
         }
 
 
+        //Opgave 3b
+        // min try catch håndteres allerede i main, se opgave 3.
+
+
         //Opgave 4
+        ArrayList<String> data = new ArrayList<>();
+        data.add("Espresso, En kraftfuld og koncentreret kaffe, 25.0");
+        data.add("Latte, Espresso med dampet mælk, 45.0");
+        data.add("Cola, Kold og brusende, 30.0");
+
+        for(String line : data){
+            String[] lines = line.split(",");
+            String name = lines[0].trim();
+            String desc = lines[1].trim();
+            String price = lines[2].trim();
+            System.out.println(name + " - " + desc + " (" + price + "kr.)");
+        }
 
 
 
