@@ -90,8 +90,9 @@ public class Main {
         // min try catch håndteres allerede i main, se opgave 3.
 
 
-        //Opgave 4
+        //Opgave 4 og 5
         ArrayList<String> data = new ArrayList<>();
+        double sum = 0;
         data.add("Espresso, En kraftfuld og koncentreret kaffe, 25.0");
         data.add("Latte, Espresso med dampet mælk, 45.0");
         data.add("Cola, Kold og brusende, 30.0");
@@ -100,14 +101,16 @@ public class Main {
             String[] lines = line.split(",");
             String name = lines[0].trim();
             String desc = lines[1].trim();
-            String price = lines[2].trim();
-            System.out.println(name + " - " + desc + " (" + price + "kr.)");
+            try{
+                double price = Double.parseDouble(lines[2].trim());
+                System.out.println(name + " - " + desc + " (" + price + "kr.)");
+                sum += price;
+            }
+            catch(NumberFormatException e){
+                System.out.println("Error converting price");
+            }
         }
-
-
-
-
-
+        System.out.println("Total price: " + sum);
 
 
     }
